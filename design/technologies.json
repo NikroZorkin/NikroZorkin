@@ -1,0 +1,890 @@
+{
+  "description": "Technologies used or explored, without proficiency scores. Family entries include their adapters, plugins and type definitions. Packages are an audit coverage map; only labels and icons appear in the profile.",
+  "groups": [
+    {
+      "id": "design",
+      "title": "Design & graphics",
+      "items": [
+        {
+          "id": "figma",
+          "label": "Figma",
+          "icon": "figma"
+        },
+        {
+          "id": "svg",
+          "label": "SVG",
+          "icon": "svg"
+        },
+        {
+          "id": "canvas",
+          "label": "Canvas",
+          "monogram": "2D"
+        },
+        {
+          "id": "webgl",
+          "label": "WebGL",
+          "icon": "webgl"
+        },
+        {
+          "id": "phosphor",
+          "label": "Phosphor",
+          "icon": "phosphoricons",
+          "npm": [
+            "@phosphor-icons/react"
+          ]
+        },
+        {
+          "id": "lucide",
+          "label": "Lucide",
+          "icon": "lucide",
+          "npm": [
+            "lucide-react"
+          ]
+        },
+        {
+          "id": "heroicons",
+          "label": "Heroicons",
+          "monogram": "H",
+          "npm": [
+            "@heroicons/react"
+          ]
+        },
+        {
+          "id": "tabler-icons",
+          "label": "Tabler Icons",
+          "monogram": "T",
+          "npm": [
+            "@tabler/icons-react"
+          ]
+        },
+        {
+          "id": "react-icons",
+          "label": "React Icons",
+          "icon": "react",
+          "npm": [
+            "react-icons"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "languages",
+      "title": "Languages",
+      "items": [
+        {
+          "id": "html",
+          "label": "HTML",
+          "icon": "html5"
+        },
+        {
+          "id": "css",
+          "label": "CSS",
+          "icon": "css"
+        },
+        {
+          "id": "javascript",
+          "label": "JavaScript",
+          "icon": "javascript"
+        },
+        {
+          "id": "typescript",
+          "label": "TypeScript",
+          "icon": "typescript",
+          "npm": [
+            "typescript"
+          ]
+        },
+        {
+          "id": "python",
+          "label": "Python",
+          "icon": "python"
+        },
+        {
+          "id": "php",
+          "label": "PHP",
+          "icon": "php"
+        },
+        {
+          "id": "csharp",
+          "label": "C#",
+          "monogram": "C#"
+        },
+        {
+          "id": "sql",
+          "label": "SQL",
+          "monogram": "SQL"
+        },
+        {
+          "id": "markdown",
+          "label": "Markdown",
+          "icon": "markdown"
+        }
+      ]
+    },
+    {
+      "id": "frameworks",
+      "title": "Frameworks & runtimes",
+      "items": [
+        {
+          "id": "react",
+          "label": "React",
+          "icon": "react",
+          "npm": [
+            "react",
+            "react-dom",
+            "@types/react",
+            "@types/react-dom"
+          ]
+        },
+        {
+          "id": "nextjs",
+          "label": "Next.js",
+          "icon": "nextdotjs",
+          "npm": [
+            "next"
+          ]
+        },
+        {
+          "id": "astro",
+          "label": "Astro",
+          "icon": "astro",
+          "npm": [
+            "astro",
+            "@astrojs/react",
+            "@astrojs/check"
+          ]
+        },
+        {
+          "id": "nodejs",
+          "label": "Node.js",
+          "icon": "nodedotjs",
+          "npm": [
+            "@types/node"
+          ]
+        },
+        {
+          "id": "fastapi",
+          "label": "FastAPI",
+          "icon": "fastapi",
+          "python": [
+            "fastapi"
+          ]
+        },
+        {
+          "id": "vite",
+          "label": "Vite",
+          "icon": "vite",
+          "npm": [
+            "vite",
+            "@vitejs/plugin-react"
+          ]
+        },
+        {
+          "id": "electron",
+          "label": "Electron",
+          "icon": "electron",
+          "npm": [
+            "electron"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ui",
+      "title": "UI & motion",
+      "items": [
+        {
+          "id": "tailwind",
+          "label": "Tailwind CSS",
+          "icon": "tailwindcss",
+          "npm": [
+            "tailwindcss",
+            "@tailwindcss/postcss",
+            "@tailwindcss/vite"
+          ]
+        },
+        {
+          "id": "postcss",
+          "label": "PostCSS",
+          "icon": "postcss"
+        },
+        {
+          "id": "shadcn",
+          "label": "shadcn/ui",
+          "icon": "shadcnui",
+          "npm": [
+            "shadcn"
+          ]
+        },
+        {
+          "id": "radix",
+          "label": "Radix UI",
+          "icon": "radixui",
+          "npm": [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-slot",
+            "@radix-ui/react-avatar",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-popover",
+            "@radix-ui/react-scroll-area",
+            "@radix-ui/react-select",
+            "@radix-ui/react-separator",
+            "@radix-ui/react-switch",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-label",
+            "@radix-ui/react-radio-group",
+            "@radix-ui/react-checkbox"
+          ]
+        },
+        {
+          "id": "base-ui",
+          "label": "Base UI",
+          "icon": "baseui",
+          "npm": [
+            "@base-ui/react"
+          ]
+        },
+        {
+          "id": "styled-components",
+          "label": "styled-components",
+          "icon": "styledcomponents",
+          "npm": [
+            "styled-components"
+          ]
+        },
+        {
+          "id": "gsap",
+          "label": "GSAP",
+          "icon": "gsap",
+          "npm": [
+            "gsap",
+            "@gsap/react"
+          ]
+        },
+        {
+          "id": "motion",
+          "label": "Motion",
+          "monogram": "M",
+          "npm": [
+            "motion",
+            "framer-motion"
+          ]
+        },
+        {
+          "id": "lenis",
+          "label": "Lenis",
+          "monogram": "L",
+          "npm": [
+            "lenis"
+          ]
+        },
+        {
+          "id": "threejs",
+          "label": "Three.js",
+          "icon": "threedotjs",
+          "npm": [
+            "three",
+            "@types/three"
+          ]
+        },
+        {
+          "id": "recharts",
+          "label": "Recharts",
+          "monogram": "R",
+          "npm": [
+            "recharts"
+          ]
+        },
+        {
+          "id": "react-flow",
+          "label": "React Flow",
+          "monogram": "RF",
+          "npm": [
+            "@xyflow/react"
+          ]
+        },
+        {
+          "id": "kokonut-ui",
+          "label": "Kokonut UI",
+          "monogram": "K"
+        },
+        {
+          "id": "smooth-ui",
+          "label": "SmoothUI",
+          "monogram": "S"
+        },
+        {
+          "id": "beui",
+          "label": "beUI",
+          "monogram": "be"
+        },
+        {
+          "id": "magic-ui",
+          "label": "Magic UI",
+          "monogram": "M"
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "title": "State, forms & utilities",
+      "items": [
+        {
+          "id": "zustand",
+          "label": "Zustand",
+          "monogram": "Z",
+          "npm": [
+            "zustand"
+          ]
+        },
+        {
+          "id": "react-hook-form",
+          "label": "React Hook Form",
+          "icon": "reacthookform",
+          "npm": [
+            "react-hook-form",
+            "@hookform/resolvers"
+          ]
+        },
+        {
+          "id": "zod",
+          "label": "Zod",
+          "icon": "zod",
+          "npm": [
+            "zod"
+          ]
+        },
+        {
+          "id": "tanstack-table",
+          "label": "TanStack Table",
+          "icon": "reacttable",
+          "npm": [
+            "@tanstack/react-table"
+          ]
+        },
+        {
+          "id": "next-intl",
+          "label": "next-intl",
+          "monogram": "i18n",
+          "npm": [
+            "next-intl"
+          ]
+        },
+        {
+          "id": "next-themes",
+          "label": "next-themes",
+          "monogram": "NT",
+          "npm": [
+            "next-themes"
+          ]
+        },
+        {
+          "id": "cva",
+          "label": "CVA",
+          "monogram": "CV",
+          "npm": [
+            "class-variance-authority"
+          ]
+        },
+        {
+          "id": "clsx",
+          "label": "clsx",
+          "monogram": "cx",
+          "npm": [
+            "clsx"
+          ]
+        },
+        {
+          "id": "tailwind-merge",
+          "label": "tailwind-merge",
+          "monogram": "tw",
+          "npm": [
+            "tailwind-merge"
+          ]
+        },
+        {
+          "id": "react-use-measure",
+          "label": "react-use-measure",
+          "monogram": "↔",
+          "npm": [
+            "react-use-measure"
+          ]
+        },
+        {
+          "id": "shiki",
+          "label": "Shiki",
+          "monogram": "{ }",
+          "npm": [
+            "shiki"
+          ]
+        },
+        {
+          "id": "cmdk",
+          "label": "cmdk",
+          "monogram": ">_",
+          "npm": [
+            "cmdk"
+          ]
+        },
+        {
+          "id": "date-fns",
+          "label": "date-fns",
+          "icon": "datefns",
+          "npm": [
+            "date-fns"
+          ]
+        },
+        {
+          "id": "react-day-picker",
+          "label": "React DayPicker",
+          "monogram": "31",
+          "npm": [
+            "react-day-picker"
+          ]
+        },
+        {
+          "id": "sonner",
+          "label": "Sonner",
+          "monogram": "S",
+          "npm": [
+            "sonner"
+          ]
+        },
+        {
+          "id": "pdf-parse",
+          "label": "pdf-parse",
+          "monogram": "PDF",
+          "npm": [
+            "pdf-parse"
+          ]
+        },
+        {
+          "id": "html2pdf",
+          "label": "html2pdf.js",
+          "monogram": "PDF",
+          "npm": [
+            "html2pdf.js"
+          ]
+        },
+        {
+          "id": "dotenv",
+          "label": "dotenv",
+          "icon": "dotenv",
+          "npm": [
+            "dotenv"
+          ],
+          "python": [
+            "python-dotenv"
+          ]
+        },
+        {
+          "id": "fontsource",
+          "label": "Fontsource",
+          "monogram": "Aa",
+          "npm": [
+            "@fontsource/pacifico",
+            "@fontsource-variable/geist"
+          ]
+        },
+        {
+          "id": "geist",
+          "label": "Geist",
+          "monogram": "G",
+          "npm": [
+            "geist"
+          ]
+        },
+        {
+          "id": "tw-animate-css",
+          "label": "tw-animate-css",
+          "monogram": "tw",
+          "npm": [
+            "tw-animate-css"
+          ]
+        },
+        {
+          "id": "tailwind-animate",
+          "label": "tailwind-animate",
+          "monogram": "tw",
+          "npm": [
+            "tailwind-animate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Data & CMS",
+      "items": [
+        {
+          "id": "prisma",
+          "label": "Prisma",
+          "icon": "prisma",
+          "npm": [
+            "prisma",
+            "@prisma/client"
+          ]
+        },
+        {
+          "id": "sqlite",
+          "label": "SQLite",
+          "icon": "sqlite"
+        },
+        {
+          "id": "postgresql",
+          "label": "PostgreSQL",
+          "icon": "postgresql"
+        },
+        {
+          "id": "sqlalchemy",
+          "label": "SQLAlchemy",
+          "icon": "sqlalchemy",
+          "python": [
+            "sqlalchemy"
+          ]
+        },
+        {
+          "id": "alembic",
+          "label": "Alembic",
+          "monogram": "A",
+          "python": [
+            "alembic"
+          ]
+        },
+        {
+          "id": "psycopg",
+          "label": "psycopg2",
+          "monogram": "PG",
+          "python": [
+            "psycopg2-binary"
+          ]
+        },
+        {
+          "id": "sanity",
+          "label": "Sanity",
+          "icon": "sanity",
+          "npm": [
+            "sanity",
+            "@sanity/client",
+            "@sanity/image-url",
+            "@sanity/types",
+            "@sanity/vision",
+            "@sanity/cli"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apis",
+      "title": "APIs & integrations",
+      "items": [
+        {
+          "id": "openai",
+          "label": "OpenAI",
+          "assetIcon": "openai"
+        },
+        {
+          "id": "replicate",
+          "label": "Replicate",
+          "icon": "replicate",
+          "npm": [
+            "replicate"
+          ]
+        },
+        {
+          "id": "clerk",
+          "label": "Clerk",
+          "icon": "clerk",
+          "npm": [
+            "@clerk/react"
+          ],
+          "python": [
+            "clerk-backend-api"
+          ]
+        },
+        {
+          "id": "stripe",
+          "label": "Stripe",
+          "icon": "stripe",
+          "python": [
+            "stripe"
+          ]
+        },
+        {
+          "id": "google-oauth",
+          "label": "Google OAuth",
+          "icon": "google",
+          "python": [
+            "google-auth"
+          ]
+        },
+        {
+          "id": "google-sheets",
+          "label": "Google Sheets",
+          "icon": "googlesheets"
+        },
+        {
+          "id": "gspread",
+          "label": "gspread",
+          "monogram": "gs",
+          "python": [
+            "gspread"
+          ]
+        },
+        {
+          "id": "youtube-api",
+          "label": "YouTube API",
+          "icon": "youtube"
+        },
+        {
+          "id": "coingecko",
+          "label": "CoinGecko",
+          "monogram": "CG"
+        },
+        {
+          "id": "n8n",
+          "label": "n8n",
+          "icon": "n8n"
+        },
+        {
+          "id": "discord",
+          "label": "Discord",
+          "icon": "discord"
+        },
+        {
+          "id": "yt-dlp",
+          "label": "yt-dlp",
+          "monogram": "yt",
+          "python": [
+            "yt-dlp"
+          ]
+        },
+        {
+          "id": "ffmpeg",
+          "label": "FFmpeg",
+          "icon": "ffmpeg",
+          "npm": [
+            "ffmpeg-static"
+          ]
+        },
+        {
+          "id": "svix",
+          "label": "Svix",
+          "monogram": "Sv",
+          "python": [
+            "svix"
+          ]
+        },
+        {
+          "id": "cryptography",
+          "label": "cryptography",
+          "monogram": "cr",
+          "python": [
+            "cryptography"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "title": "Testing & quality",
+      "items": [
+        {
+          "id": "playwright",
+          "label": "Playwright",
+          "monogram": "PW",
+          "npm": [
+            "@playwright/test"
+          ]
+        },
+        {
+          "id": "axe",
+          "label": "axe-core",
+          "monogram": "axe",
+          "npm": [
+            "@axe-core/playwright"
+          ]
+        },
+        {
+          "id": "jest",
+          "label": "Jest",
+          "icon": "jest"
+        },
+        {
+          "id": "vitest",
+          "label": "Vitest",
+          "icon": "vitest",
+          "npm": [
+            "vitest"
+          ]
+        },
+        {
+          "id": "pytest",
+          "label": "pytest",
+          "icon": "pytest",
+          "python": [
+            "pytest"
+          ]
+        },
+        {
+          "id": "pytest-asyncio",
+          "label": "pytest-asyncio",
+          "monogram": "py",
+          "python": [
+            "pytest-asyncio"
+          ]
+        },
+        {
+          "id": "httpx",
+          "label": "HTTPX",
+          "monogram": "HX",
+          "python": [
+            "httpx"
+          ]
+        },
+        {
+          "id": "pydantic",
+          "label": "Pydantic",
+          "icon": "pydantic"
+        },
+        {
+          "id": "eslint",
+          "label": "ESLint",
+          "icon": "eslint",
+          "npm": [
+            "eslint",
+            "eslint-config-next",
+            "@eslint/js",
+            "eslint-plugin-boundaries",
+            "eslint-plugin-import-x",
+            "eslint-plugin-unicorn",
+            "typescript-eslint",
+            "eslint-config-prettier",
+            "eslint-plugin-react-hooks",
+            "eslint-plugin-react-refresh",
+            "globals"
+          ]
+        },
+        {
+          "id": "prettier",
+          "label": "Prettier",
+          "icon": "prettier",
+          "npm": [
+            "prettier",
+            "prettier-plugin-astro",
+            "prettier-plugin-tailwindcss"
+          ]
+        },
+        {
+          "id": "husky",
+          "label": "Husky",
+          "monogram": "H",
+          "npm": [
+            "husky"
+          ]
+        },
+        {
+          "id": "lint-staged",
+          "label": "lint-staged",
+          "monogram": "ls",
+          "npm": [
+            "lint-staged"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools & deployment",
+      "items": [
+        {
+          "id": "git",
+          "label": "Git",
+          "icon": "git"
+        },
+        {
+          "id": "github",
+          "label": "GitHub",
+          "icon": "github"
+        },
+        {
+          "id": "github-actions",
+          "label": "GitHub Actions",
+          "icon": "githubactions"
+        },
+        {
+          "id": "dependabot",
+          "label": "Dependabot",
+          "icon": "dependabot"
+        },
+        {
+          "id": "docker",
+          "label": "Docker",
+          "icon": "docker"
+        },
+        {
+          "id": "vercel",
+          "label": "Vercel",
+          "icon": "vercel"
+        },
+        {
+          "id": "fly",
+          "label": "Fly.io",
+          "icon": "flydotio"
+        },
+        {
+          "id": "codespaces",
+          "label": "Codespaces",
+          "icon": "github"
+        },
+        {
+          "id": "npm",
+          "label": "npm",
+          "icon": "npm"
+        },
+        {
+          "id": "pnpm",
+          "label": "pnpm",
+          "icon": "pnpm"
+        },
+        {
+          "id": "pip",
+          "label": "pip",
+          "icon": "pypi"
+        },
+        {
+          "id": "uvicorn",
+          "label": "Uvicorn",
+          "monogram": "U",
+          "python": [
+            "uvicorn"
+          ]
+        },
+        {
+          "id": "esbuild",
+          "label": "esbuild",
+          "icon": "esbuild",
+          "npm": [
+            "esbuild"
+          ]
+        },
+        {
+          "id": "tsx",
+          "label": "tsx",
+          "monogram": "tsx",
+          "npm": [
+            "tsx"
+          ]
+        },
+        {
+          "id": "electron-vite",
+          "label": "electron-vite",
+          "icon": "electron",
+          "npm": [
+            "electron-vite"
+          ]
+        }
+      ]
+    }
+  ]
+}

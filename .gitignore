@@ -1,0 +1,9 @@
+.codex-local/
+.codex-local/
+
+node_modules/
+.cache/
+.fonts/
+.DS_Store
+preview/
+test-results/

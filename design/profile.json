@@ -1,0 +1,40 @@
+{
+  "name": "Danylo Zorkin",
+  "login": "NikroZorkin",
+  "role": "Full-Stack Web Developer · UI/UX Designer",
+  "hero": {
+    "greeting": "< Hi, I’m Danylo Zorkin />",
+    "lines": ["I design in Figma and build with", "Next.js, React and TypeScript."],
+    "command": "design. build. review. ship.",
+    "cycleSeconds": 10
+  },
+  "intro": "I design in Figma and build responsive websites and web apps with Next.js, React, and TypeScript — from landing pages and redesigns to MVPs and dashboards.",
+  "technologyIds": [
+    "figma", "html", "css", "javascript", "typescript", "react", "nextjs", "astro",
+    "tailwind", "shadcn", "gsap", "motion", "threejs", "zustand", "zod",
+    "nodejs", "python", "fastapi", "postgresql", "prisma", "sanity",
+    "stripe", "n8n", "openai", "git", "github", "docker", "vercel", "playwright"
+  ],
+  "aiTools": [
+    { "id": "codex", "label": "Codex", "assetIcon": "codex" },
+    { "id": "grok-cli", "label": "Grok CLI", "assetIcon": "grok" },
+    { "id": "grokbot", "label": "Grokbot", "assetIcon": "grokbot" },
+    { "id": "claude-code", "label": "Claude Code", "icon": "claudecode" }
+  ],
+  "capabilities": [
+    {
+      "label": "Workflow automation",
+      "text": "I automate processes with n8n, connect services through APIs and webhooks, and build practical AI integrations."
+    },
+    {
+      "label": "Payments & subscriptions",
+      "text": "I integrate Stripe for one-time payments, recurring subscriptions, and customer billing portals."
+    }
+  ],
+  "contacts": [
+    { "id": "upwork", "label": "Upwork", "action": "Work with me", "url": "https://www.upwork.com/freelancers/~01648f1c04b49f406f", "icon": "upwork" },
+    { "id": "linkedin", "label": "LinkedIn", "action": "Connect with me", "url": "https://www.linkedin.com/in/danylo-zorkin-bb0bbb283/", "monogram": "in" },
+    { "id": "email", "label": "Email", "action": "Let’s talk", "url": "mailto:danilzorkin1402@gmail.com", "symbol": "mail" },
+    { "id": "telegram", "label": "Telegram", "action": "Message me", "url": "https://t.me/danylo_zorkin", "icon": "telegram" }
+  ]
+}
