@@ -1,5 +1,6 @@
 import { mkdir, writeFile, readFile, readdir, unlink, rmdir } from 'node:fs/promises';
 import sharp from 'sharp';
+import { createHash } from 'node:crypto';
 import { skyline, skylineModel } from './skyline.mjs';
 import { profile, tokens, displayedTechnologies, escape, loadFonts, hero, chip, heading, contactCard } from './artwork.mjs';
 
@@ -68,17 +69,21 @@ for (const [index, contact] of profile.contacts.entries()) {
 // Adjacent links avoid inline whitespace that would push the last 25%-wide card to a new row.
 sections.push(`<p>${contacts.join('')}</p>`);
 const contributions = JSON.parse(await readFile('design/contributions.json', 'utf8'));
+const skylineHash = createHash('sha256');
 for (const mobile of [false, true]) {
   for (const animate of [true, false]) {
-    await writeFile(`assets/skyline-${mobile ? 'mobile' : 'desktop'}${animate ? '' : '-static'}.svg`, skyline(contributions, fonts, { mobile, animate }));
+    const artwork = skyline(contributions, fonts, { mobile, animate });
+    skylineHash.update(artwork);
+    await writeFile(`assets/skyline-${mobile ? 'mobile' : 'desktop'}${animate ? '' : '-static'}.svg`, artwork);
   }
 }
+const skylineVersion = skylineHash.digest('hex').slice(0, 12);
 const activity = skylineModel(contributions);
 sections.push(`<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/skyline-mobile-static.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/skyline-desktop-static.svg">
-  <source media="(max-width: 600px)" srcset="./assets/skyline-mobile.svg">
-  <img src="./assets/skyline-desktop.svg" alt="GitHub contribution skyline: ${activity.total} contributions, busiest day ${activity.max}, longest streak ${activity.longest} days, current streak ${activity.current} days. Every block represents one day." width="1000">
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/skyline-mobile-static.svg?v=${skylineVersion}">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/skyline-desktop-static.svg?v=${skylineVersion}">
+  <source media="(max-width: 600px)" srcset="./assets/skyline-mobile.svg?v=${skylineVersion}">
+  <img src="./assets/skyline-desktop.svg?v=${skylineVersion}" alt="GitHub contribution skyline: ${activity.total} contributions, busiest day ${activity.max}, longest streak ${activity.longest} days, current streak ${activity.current} days. Every block represents one day." width="1000">
 </picture>`);
 await writeFile('README.md', `${sections.join('\n\n')}\n`);
 

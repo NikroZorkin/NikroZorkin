@@ -15,7 +15,7 @@ for (const ecosystem of ['npm', 'python']) {
   assert.deepEqual([...mapped].sort(), [...dependencies[ecosystem]].sort(), `Incomplete ${ecosystem} inventory coverage`);
 }
 
-const refs = [...readme.matchAll(/(?:src|srcset)="([^"]+)"/g)].map(match => match[1]);
+const refs = [...readme.matchAll(/(?:src|srcset)="([^"]+)"/g)].map(match => match[1].split('?')[0]);
 for (const ref of new Set(refs)) {
   assert(ref.startsWith('./assets/'), `Non-local image reference: ${ref}`);
   const path = resolve(root, ref);
@@ -54,7 +54,7 @@ for (const path of assets.filter(path => path.endsWith('.svg'))) {
   assert(!/(?:href|xlink:href)="(?!data:image\/png;base64,|#)/.test(svg), `External SVG dependency: ${path}`);
   assert(svg.includes('<title') && svg.includes('<desc'), `Missing image metadata: ${path}`);
   const animated = /assets\/(hero|skyline)-(desktop|mobile)\.svg$/.test(path);
-  assert.equal(svg.includes('@keyframes'), animated, `Unexpected animation in ${path}`);
+  assert.equal(svg.includes('@keyframes') || svg.includes('<animate '), animated, `Unexpected animation in ${path}`);
   if (animated) assert(svg.includes('prefers-reduced-motion:reduce'), 'Missing internal reduced-motion support');
   if (path.includes('/hero-')) assert(Buffer.byteLength(svg) < 600_000, `Oversized terminal card: ${path}`);
 }

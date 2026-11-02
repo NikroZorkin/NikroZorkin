@@ -67,20 +67,22 @@ export function skyline(snapshot, fonts, { mobile = false, animate = true } = {}
     frames.push(boxes.map(faces => faces.map(face => face.map(([x, y], index) => `${index ? 'L' : 'M'}${round(ox + (x - minX) * scale)} ${round(oy + (y - minY) * scale)}`).join('') + 'Z')));
   }
   const sorted = model.cells.map((cell, index) => ({ cell, index })).sort((a, b) => (a.cell.week - b.cell.week) * Math.sin(yaw) + (a.cell.day - b.cell.day) * Math.cos(yaw));
-  let styles = '';
   let city = '';
   for (const { cell, index } of sorted) {
     let faces = '';
     for (let face = 0; face < 3; face++) {
       const name = `day${index}face${face}`;
       const d = frames[12][index][face];
+      let motion = '';
       if (animate) {
-        let keys = `0%,10%,94%,100%{d:path('${frames[0][index][face]}')}`;
-        for (let frame = 1; frame < 12; frame++) keys += `${round(10 + frame / 12 * 22)}%,${round(94 - frame / 12 * 18)}%{d:path('${frames[frame][index][face]}')}`;
-        keys += `32%,76%{d:path('${d}')}`;
-        styles += `.${name}{animation:${name} 18s linear infinite}@keyframes ${name}{${keys}}`;
+        const sequence = [{ time: 0, frame: 0 }, { time: .1, frame: 0 }];
+        for (let frame = 1; frame <= 12; frame++) sequence.push({ time: (.1 + frame / 12 * .22), frame });
+        sequence.push({ time: .76, frame: 12 });
+        for (let frame = 11; frame >= 0; frame--) sequence.push({ time: (.94 - frame / 12 * .18), frame });
+        sequence.push({ time: 1, frame: 0 });
+        motion = `<animate attributeName="d" dur="18s" repeatCount="indefinite" calcMode="linear" keyTimes="${sequence.map(s => s.time.toFixed(5)).join(';')}" values="${sequence.map(s => frames[s.frame][index][face]).join(';')}"/>`;
       }
-      faces += `<path class="${name}" d="${d}" fill="${shade(palette[cell.level], [ .78, .61, 1 ][face])}" stroke="${colors.surface}" stroke-width=".35" stroke-linejoin="round"/>`;
+      faces += `<path class="${name}" d="${d}" fill="${shade(palette[cell.level], [ .78, .61, 1 ][face])}" stroke="${colors.surface}" stroke-width=".35" stroke-linejoin="round">${motion}</path>`;
     }
     city += `<g><title>${escape(`${cell.date}: ${cell.count} contributions`)}</title>${faces}</g>`;
   }
@@ -89,7 +91,7 @@ export function skyline(snapshot, fonts, { mobile = false, animate = true } = {}
   content += label('Contribution skyline', pad, 43, mobile ? 23 : 26);
   content += label(`A year of building · @${snapshot.login}`, pad, 68, mobile ? 12.5 : 15, colors.muted);
   content += label(`${from} — ${to}`, pad, 94, mobile ? 11.5 : 13, colors.sand);
-  content += city;
+  content += animate ? `<g class="skyline-animated">${city}</g><g class="skyline-static" display="none">${city.replace(/<animate\b[^>]*\/>/g, '')}</g>` : city;
   const divider = mobile ? 376 : 500;
   content += `<path d="M${pad} ${divider}H${width - pad}" stroke="${colors.border}"/>`;
   const stats = [[fmt(model.total), 'Contributions'], [fmt(model.max), 'Busiest day'], [`${model.longest} days`, 'Longest streak'], [`${model.current} days`, 'Current streak']];
@@ -105,6 +107,6 @@ export function skyline(snapshot, fonts, { mobile = false, animate = true } = {}
   content += label('Less', legendX, footY, 10, colors.muted);
   palette.forEach((color, i) => { content += `<rect x="${legendX + 28 + i * 14}" y="${footY - 9}" width="10" height="10" rx="2" fill="${color}"/>`; });
   content += label('More', legendX + 102, footY, 10, colors.muted);
-  if (animate) content = `<style>${styles}@media(prefers-reduced-motion:reduce){path{animation:none!important}}</style>` + content;
+  if (animate) content = `<style>@media(prefers-reduced-motion:reduce){.skyline-animated{display:none}.skyline-static{display:inline}}</style>` + content;
   return svgDocument(width, height, `GitHub contribution skyline for ${snapshot.login}`, content, `${model.total} contributions from ${from} to ${to}. Busiest day: ${model.max}. Longest streak: ${model.longest} days. Current streak: ${model.current} days. Every block is one day; its height represents that day's contributions.`);
 }
