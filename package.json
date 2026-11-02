@@ -11,7 +11,8 @@
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
     "check": "node scripts/check.mjs",
-    "check:visual": "node scripts/check-visual.mjs"
+    "check:visual": "node scripts/check-visual.mjs",
+    "skyline:refresh": "node scripts/update-contributions.mjs && npm run build && node scripts/preview.mjs --render-only"
   },
   "devDependencies": {
     "fontkit": "2.0.4",

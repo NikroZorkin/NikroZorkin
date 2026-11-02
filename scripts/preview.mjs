@@ -23,18 +23,19 @@ export async function createPreview({ refresh = false } = {}) {
     await writeFile(cachePath, html);
   }
   await copyFile('node_modules/github-markdown-css/github-markdown.css', 'preview/github-markdown.css');
+  await copyFile('scripts/preview-skyline.js', 'preview/skyline.js');
   await writeFile('preview/rendered-github.html', html);
   await writeFile('preview/index.html', `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><base href="../"><title>Danylo Zorkin · GitHub README preview</title><link rel="stylesheet" href="preview/github-markdown.css"><style>
 *{box-sizing:border-box}body{margin:0;padding:36px 20px;background:#0d1117;color:#f0f6fc;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.preview-shell{max-width:1040px;margin:auto}.preview-note{font-size:12px;color:#9198a1;margin:0 0 14px}.readme-frame{padding:26px 32px 32px;border:1px solid #30363d;border-radius:7px;background:#0d1117}.readme-label{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;margin:0 0 24px;color:#9198a1}.readme-label strong{color:#f0f6fc;font-weight:500}.markdown-body{background:transparent}.markdown-body>picture:first-child{display:block}.markdown-body>p:last-child{margin-bottom:0}@media(prefers-color-scheme:light){body,.readme-frame{background:#fff;color:#1f2328}.readme-frame{border-color:#d1d9e0}.readme-label,.preview-note{color:#59636e}.readme-label strong{color:#1f2328}}@media(max-width:767px){body{padding:20px 12px}.readme-frame{padding:16px}.readme-label{margin-bottom:18px}.preview-note{font-size:11px}}
-</style></head><body><main class="preview-shell"><p class="preview-note">Local preview · GitHub Markdown renderer · follows your system theme and motion preference</p><section class="readme-frame"><div class="readme-label">NikroZorkin / <strong>README.md</strong></div><article class="markdown-body">${html}</article></section></main></body></html>\n`);
+</style></head><body><main class="preview-shell"><p class="preview-note">Local preview · Skyline starts on scroll here; GitHub README uses an automatic loop.</p><section class="readme-frame"><div class="readme-label">NikroZorkin / <strong>README.md</strong></div><article class="markdown-body">${html}</article></section></main><script type="module" src="preview/skyline.js"></script></body></html>\n`);
   await writeFile('preview/render-info.json', JSON.stringify({ renderer: 'GitHub REST Markdown API', markdownSha256: hash, styles: 'github-markdown-css 5.9.0', published: false }, null, 2));
   return { html, hash };
 }
 
 export async function servePreview({ port = 4173 } = {}) {
   const root = process.cwd();
-  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.json': 'application/json' };
+  const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.json': 'application/json' };
   const server = createServer(async (request, response) => {
     try {
       const url = new URL(request.url, 'http://127.0.0.1');

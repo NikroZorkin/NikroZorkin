@@ -1,0 +1,57 @@
+name: Update contribution skyline
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: Rebuild artwork even when the calendar has not changed
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: contribution-skyline
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.repository == 'NikroZorkin/NikroZorkin'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Install build dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Fetch contribution calendar
+        id: calendar
+        run: node scripts/update-contributions.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Prepare font inputs
+        if: steps.calendar.outputs.changed == 'true' || inputs.rebuild == true
+        run: node scripts/fetch-fonts.mjs
+      - name: Build and validate artwork
+        if: steps.calendar.outputs.changed == 'true' || inputs.rebuild == true
+        run: |
+          npm run build
+          npm run check
+      - name: Save updated skyline
+        if: steps.calendar.outputs.changed == 'true' || inputs.rebuild == true
+        run: |
+          git add -- README.md design/contributions.json assets/skyline-*.svg
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update contribution skyline'
+          git push origin HEAD:main

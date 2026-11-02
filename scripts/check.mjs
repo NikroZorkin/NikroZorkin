@@ -53,7 +53,7 @@ for (const path of assets.filter(path => path.endsWith('.svg'))) {
   assert(!/<(?:script|foreignObject|text)\b|@font-face/i.test(svg), `Non-portable SVG: ${path}`);
   assert(!/(?:href|xlink:href)="(?!data:image\/png;base64,|#)/.test(svg), `External SVG dependency: ${path}`);
   assert(svg.includes('<title') && svg.includes('<desc'), `Missing image metadata: ${path}`);
-  const animated = /assets\/hero-(desktop|mobile)\.svg$/.test(path);
+  const animated = /assets\/(hero|skyline)-(desktop|mobile)\.svg$/.test(path);
   assert.equal(svg.includes('@keyframes'), animated, `Unexpected animation in ${path}`);
   if (animated) assert(svg.includes('prefers-reduced-motion:reduce'), 'Missing internal reduced-motion support');
   if (path.includes('/hero-')) assert(Buffer.byteLength(svg) < 600_000, `Oversized terminal card: ${path}`);
