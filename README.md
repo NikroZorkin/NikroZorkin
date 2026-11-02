@@ -62,8 +62,8 @@ I design in Figma and build responsive websites and web apps with Next.js, React
 <p><a href="https://www.upwork.com/freelancers/~01648f1c04b49f406f"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/upwork-mobile.svg" width="50%" height="100"><img src="./assets/contacts/upwork.svg" alt="Upwork — Work with me" width="25%" height="100"></picture></a><a href="https://www.linkedin.com/in/danylo-zorkin-bb0bbb283/"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/linkedin-mobile.svg" width="50%" height="100"><img src="./assets/contacts/linkedin.svg" alt="LinkedIn — Connect with me" width="25%" height="100"></picture></a><a href="mailto:danilzorkin1402@gmail.com"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/email-mobile.svg" width="50%" height="100"><img src="./assets/contacts/email.svg" alt="Email — Let’s talk" width="25%" height="100"></picture></a><a href="https://t.me/danylo_zorkin"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/telegram-mobile.svg" width="50%" height="100"><img src="./assets/contacts/telegram.svg" alt="Telegram — Message me" width="25%" height="100"></picture></a></p>
 
 <picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/skyline-mobile-static.svg?v=2b7b51974c3d">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/skyline-desktop-static.svg?v=2b7b51974c3d">
-  <source media="(max-width: 600px)" srcset="./assets/skyline-mobile.svg?v=2b7b51974c3d">
-  <img src="./assets/skyline-desktop.svg?v=2b7b51974c3d" alt="GitHub contribution skyline: 858 contributions, busiest day 39, longest streak 33 days, current streak 33 days. Every block represents one day." width="1000">
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/skyline-mobile-static.svg?v=e9acc19564cd">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/skyline-desktop-static.svg?v=e9acc19564cd">
+  <source media="(max-width: 600px)" srcset="./assets/skyline-mobile.svg?v=e9acc19564cd">
+  <img src="./assets/skyline-desktop.svg?v=e9acc19564cd" alt="GitHub contribution skyline: 859 contributions, busiest day 39, longest streak 34 days, current streak 34 days. Every block represents one day." width="1000">
 </picture>
