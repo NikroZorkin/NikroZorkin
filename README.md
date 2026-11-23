@@ -1,10 +1,10 @@
 <!-- Generated from design/profile.json and design/technologies.json with npm run build. -->
 
 <p><a href="https://danylo-zorkin.netlify.app/"><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero/06924898e574-hero-mobile-static.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero/99a66b1ed49e-hero-desktop-static.svg">
-  <source media="(max-width: 600px)" srcset="./assets/hero/afae383b5326-hero-mobile.svg">
-  <img src="./assets/hero/43966ccf085f-hero-desktop.svg" alt="Open portfolio — Danylo Zorkin, Full-Stack Web Developer · UI/UX Designer. I design in Figma and build with Next.js, React and TypeScript." width="1200">
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero/a4a670ddf2d9-hero-mobile-static.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero/c5d5b598a3fd-hero-desktop-static.svg">
+  <source media="(max-width: 600px)" srcset="./assets/hero/854da77efd3f-hero-mobile.svg">
+  <img src="./assets/hero/e62e1bfbca39-hero-desktop.svg" alt="Open portfolio — Danylo Zorkin, Full-Stack Web Developer · UI/UX Designer. I design in Figma and build with Next.js, React and TypeScript." width="1200">
 </picture></a></p>
 
 I design in Figma and build responsive websites and web apps with Next.js, React, and TypeScript — from landing pages and redesigns to MVPs and dashboards.
@@ -62,8 +62,8 @@ I design in Figma and build responsive websites and web apps with Next.js, React
 <p><a href="https://www.upwork.com/freelancers/~01648f1c04b49f406f"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/upwork-mobile.svg" width="50%" height="100"><img src="./assets/contacts/upwork.svg" alt="Upwork — Work with me" width="25%" height="100"></picture></a><a href="https://www.linkedin.com/in/danylo-zorkin-bb0bbb283/"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/linkedin-mobile.svg" width="50%" height="100"><img src="./assets/contacts/linkedin.svg" alt="LinkedIn — Connect with me" width="25%" height="100"></picture></a><a href="mailto:danilzorkin1402@gmail.com"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/email-mobile.svg" width="50%" height="100"><img src="./assets/contacts/email.svg" alt="Email — Let’s talk" width="25%" height="100"></picture></a><a href="https://t.me/danylo_zorkin"><picture><source media="(max-width: 600px)" srcset="./assets/contacts/telegram-mobile.svg" width="50%" height="100"><img src="./assets/contacts/telegram.svg" alt="Telegram — Message me" width="25%" height="100"></picture></a></p>
 
 <picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/skyline-mobile-static.svg?v=a9a36995faa8">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/skyline-desktop-static.svg?v=a9a36995faa8">
-  <source media="(max-width: 600px)" srcset="./assets/skyline-mobile.svg?v=a9a36995faa8">
-  <img src="./assets/skyline-desktop.svg?v=a9a36995faa8" alt="GitHub contribution skyline: 953 contributions, busiest day 39, longest streak 41 days, current streak 6 days. Every block represents one day." width="1000">
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/skyline-mobile-static.svg?v=dcbd6f8106ca">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/skyline-desktop-static.svg?v=dcbd6f8106ca">
+  <source media="(max-width: 600px)" srcset="./assets/skyline-mobile.svg?v=dcbd6f8106ca">
+  <img src="./assets/skyline-desktop.svg?v=dcbd6f8106ca" alt="GitHub contribution skyline: 969 contributions, busiest day 39, longest streak 41 days, current streak 7 days. Every block represents one day." width="1000">
 </picture>
