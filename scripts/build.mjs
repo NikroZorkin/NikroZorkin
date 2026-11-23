@@ -38,8 +38,8 @@ const sections = [
 </picture>`,
   profile.intro,
   `<p><a href="${escape(profile.portfolio.url)}"><picture>
-  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/portfolio/projects-mobile.png">
-  <img src="./assets/portfolio/projects.png" alt="${escape(profile.portfolio.alt)}" width="1200">
+  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/portfolio/homepage-mobile.png">
+  <img src="./assets/portfolio/homepage.png" alt="${escape(profile.portfolio.alt)}" width="1200">
 </picture><br><strong>${escape(profile.portfolio.label)}</strong></a></p>`,
   await headingMarkup('technologies', 'Tech stack')
 ];

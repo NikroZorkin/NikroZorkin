@@ -49,7 +49,7 @@ try {
         assert.deepEqual(state.overflow, [], 'Artwork extends beyond README');
         assert.equal(state.chipCount, displayedTechnologies.length);
         assert.equal(state.portfolioDestination, profile.portfolio.url);
-        assert(state.portfolioSource.endsWith(width <= 600 ? '/projects-mobile.png' : '/projects.png'), 'Incorrect portfolio preview');
+        assert(state.portfolioSource.endsWith(width <= 600 ? '/homepage-mobile.png' : '/homepage.png'), 'Incorrect portfolio preview');
         assert.deepEqual(state.aiTools, profile.aiTools.map(item => item.label));
         assert.deepEqual(state.contacts, profile.contacts.map(contact => contact.url));
         assert(state.headings.every(source => source.endsWith(`-${colorScheme}.svg`)), 'Heading theme selection failed');

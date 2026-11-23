@@ -10,9 +10,9 @@
   },
   "intro": "I design in Figma and build responsive websites and web apps with Next.js, React, and TypeScript — from landing pages and redesigns to MVPs and dashboards.",
   "portfolio": {
-    "url": "https://github.com/NikroZorkin/portfolio-showcase",
-    "label": "Explore the portfolio on GitHub ↗",
-    "alt": "Three projects by Danylo Zorkin. SELO Зелене’s food website, the Relaynote invoice review screen and the Elements for Kitty component library."
+    "url": "https://danylo-zorkin.netlify.app/",
+    "label": "Visit my portfolio website ↗",
+    "alt": "Homepage of my portfolio, with my portrait and the introduction “I’m Danylo Zorkin. I design interfaces and build web apps.”"
   },
   "technologyIds": [
     "figma", "html", "css", "javascript", "typescript", "react", "nextjs", "astro",

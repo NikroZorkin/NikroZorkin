@@ -9,10 +9,10 @@
 
 I design in Figma and build responsive websites and web apps with Next.js, React, and TypeScript — from landing pages and redesigns to MVPs and dashboards.
 
-<p><a href="https://github.com/NikroZorkin/portfolio-showcase"><picture>
-  <source media="(max-width: 600px)" srcset="./assets/portfolio/projects-mobile.png">
-  <img src="./assets/portfolio/projects.png" alt="Three projects by Danylo Zorkin. SELO Зелене’s food website, the Relaynote invoice review screen and the Elements for Kitty component library." width="1200">
-</picture><br><strong>Explore the portfolio on GitHub ↗</strong></a></p>
+<p><a href="https://danylo-zorkin.netlify.app/"><picture>
+  <source media="(max-width: 600px)" srcset="./assets/portfolio/homepage-mobile.png">
+  <img src="./assets/portfolio/homepage.png" alt="Homepage of my portfolio, with my portrait and the introduction “I’m Danylo Zorkin. I design interfaces and build web apps.”" width="1200">
+</picture><br><strong>Visit my portfolio website ↗</strong></a></p>
 
 ## <picture><source media="(prefers-color-scheme: light)" srcset="./assets/headings/technologies-light.svg"><img src="./assets/headings/technologies-dark.svg" alt="Tech stack" width="130" height="34"></picture>
 

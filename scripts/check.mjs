@@ -33,7 +33,7 @@ assert(!readme.includes('### '), 'The unified stack was split into subcategories
 for (const capability of profile.capabilities) assert(readme.includes(capability.text), 'Missing capability description');
 const links = [...readme.matchAll(/<a href="([^"]+)"/g)].map(match => match[1]);
 assert.deepEqual(links, [profile.portfolio.url, ...profile.contacts.map(contact => contact.url)], 'Portfolio or contact destination differs from profile data');
-for (const name of ['projects.png', 'projects-mobile.png']) assert(refs.includes(`./assets/portfolio/${name}`), `Missing portfolio preview: ${name}`);
+for (const name of ['homepage.png', 'homepage-mobile.png']) assert(refs.includes(`./assets/portfolio/${name}`), `Missing portfolio preview: ${name}`);
 assert(!/selected (?:work|projects)|featured projects|visitor count|github-readme-stats|\$35/i.test(readme), 'An excluded profile section was introduced');
 assert(!/<(?:script|style|iframe)\b/i.test(readme), 'README contains unsupported active HTML');
 

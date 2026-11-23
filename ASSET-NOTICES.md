@@ -31,4 +31,4 @@ The envelope symbol is local SVG geometry. All badge and contact symbols are sta
 
 ## Portfolio preview
 
-The portfolio strip uses screenshots supplied with Danylo Zorkin’s portfolio for SELO Зелене, Relaynote and Elements for Kitty. Source frames are the SELO homepage, Relaynote invoice approval and Elements component catalog. Product names, marks and third-party material shown within the screenshots belong to their respective owners.
+The desktop and mobile previews show the homepage of Danylo Zorkin’s portfolio, including his portrait and personal mascot.
