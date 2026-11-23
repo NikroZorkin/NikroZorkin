@@ -6,5 +6,9 @@
   "mono": {
     "url": "https://pangrampangram.com/cdn/shop/files/PPNeueMontrealMono-Variable.woff2?v=14816762918673666224",
     "sha256": "23de663a6723e54bfa5c7751dbb439dcee26c148bf5ca7e7432ccf0d702d9f3d"
+  },
+  "portfolio": {
+    "url": "https://cdn.jsdelivr.net/npm/@fontsource-variable/inter-tight@5.3.0/files/inter-tight-latin-wght-normal.woff2",
+    "sha256": "77fefe8ca19b9f69b5284832c519e0493127c1f091f0a8936884be7721c4e618"
   }
 }

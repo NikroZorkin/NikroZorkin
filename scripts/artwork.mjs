@@ -36,16 +36,22 @@ export async function loadFonts() {
   return fonts;
 }
 
-function layout(text, font) {
-  return font.layout(text, { liga: false, clig: false });
+function layout(text, font, tracking = 0) {
+  const run = font.layout(text, { liga: false, clig: false });
+  if (tracking) {
+    for (const position of run.positions.slice(0, -1)) {
+      position.xAdvance += tracking * font.unitsPerEm;
+    }
+  }
+  return run;
 }
 
-export function measure(text, font, size) {
-  return layout(text, font).positions.reduce((sum, position) => sum + position.xAdvance, 0) * size / font.unitsPerEm;
+export function measure(text, font, size, tracking = 0) {
+  return layout(text, font, tracking).positions.reduce((sum, position) => sum + position.xAdvance, 0) * size / font.unitsPerEm;
 }
 
-export function lettering(text, x, y, size, font, fill = colors.text, attributes = '') {
-  const run = layout(text, font);
+export function lettering(text, x, y, size, font, fill = colors.text, attributes = '', tracking = 0) {
+  const run = layout(text, font, tracking);
   let penX = 0;
   let penY = 0;
   const paths = run.glyphs.map((glyph, i) => {
@@ -143,15 +149,14 @@ function portfolioIsland(fonts, width, mobile) {
   const label = profile.portfolio.label;
   const size = mobile ? 19 : 26;
   const depth = mobile ? 41 : 53;
-  const lens = mobile ? 5 : 7;
+  const tracking = -.01; // Same em spacing as the live portfolio CTA.
   const arrowSize = mobile ? 11 : 15;
   const padding = mobile ? 18 : 24;
   const gap = mobile ? 10 : 13;
   const radius = mobile ? 20 : 24;
   const shoulder = mobile ? 9 : 12;
   const centerY = depth * .51;
-  const labelX = padding + lens * 2 + gap;
-  const arrowX = labelX + measure(label, fonts.sans, size) + gap;
+  const arrowX = padding + measure(label, fonts.portfolio, size, tracking) + gap;
   const islandWidth = arrowX + arrowSize + padding;
   const centerX = mobile ? width * .56 : width / 2;
   const left = Math.round(centerX - islandWidth / 2);
@@ -162,9 +167,7 @@ function portfolioIsland(fonts, width, mobile) {
 
   return `<g transform="translate(${left} 2)">
     <path d="${outline}" fill="${colors.sand}" stroke="${colors.text}" stroke-opacity=".72" stroke-width="1.15"/>
-    <circle cx="${padding + lens}" cy="${centerY}" r="${lens}" fill="${colors.background}" stroke="${colors.border}" stroke-width="1.8"/>
-    <circle cx="${padding + lens - 1}" cy="${centerY - 1}" r="${lens * .43}" fill="${colors.sand}"/>
-    ${lettering(label, labelX, centerY + size * .34, size, fonts.sans, colors.background)}
+    ${lettering(label, padding, centerY + size * .34, size, fonts.portfolio, colors.background, '', tracking)}
     <g transform="translate(${arrowX} ${centerY - arrowSize / 2})" fill="none" stroke="${colors.background}" stroke-width="${mobile ? 2 : 2.6}" stroke-linecap="round" stroke-linejoin="round"><path d="M0 ${arrowSize}L${arrowSize} 0M2 0h${arrowSize - 2}v${arrowSize - 2}"/></g>
   </g>`;
 }

@@ -4,7 +4,7 @@ import { dirname } from 'node:path';
 import { tokens } from './artwork.mjs';
 
 const sources = JSON.parse(await readFile('design/font-sources.json', 'utf8'));
-// Temporary build inputs from the foundry's own CDN, never committed or cached.
+// Temporary build inputs from the pinned font sources, never committed or cached.
 for (const [key, source] of Object.entries(sources)) {
   const response = await fetch(source.url, { signal: AbortSignal.timeout(30000) });
   if (!response.ok) throw new Error(`Font download failed: ${key} (${response.status})`);

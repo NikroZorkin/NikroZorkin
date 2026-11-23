@@ -21,6 +21,8 @@ The local build inputs were the public WOFF2 specimen files served by the foundr
 
 No third-party font download site, mailing-list submission or font purchase was used. Font files remain in the ignored `.fonts/` directory and are not redistributed. This repository does not grant a font license; consult the linked foundry terms for other uses.
 
+The portfolio link uses Inter Tight Medium (500) from Fontsource. Its Latin variable font matches the file used for the buttons on Danylo’s website. [Inter Tight package and SIL Open Font License](https://www.npmjs.com/package/@fontsource-variable/inter-tight/v/5.3.0)
+
 ## Technology icons
 
 Brand symbols come from [Simple Icons](https://github.com/simple-icons/simple-icons), version **16.32.0**, distributed under [CC0](https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md). Brand names and marks belong to their respective owners. Very dark icon fills use cream for visibility on the dark chips. Technologies without an available icon use an explicitly labeled typographic monogram, not an invented brand logo.
