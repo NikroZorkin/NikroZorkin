@@ -37,6 +37,10 @@ const sections = [
   <img src="./assets/hero-desktop.svg" alt="${escape(profile.name)} — ${escape(profile.role)}. ${escape(profile.hero.lines.join(' '))}" width="1200">
 </picture>`,
   profile.intro,
+  `<p><a href="${escape(profile.portfolio.url)}"><picture>
+  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/portfolio/projects-mobile.png">
+  <img src="./assets/portfolio/projects.png" alt="${escape(profile.portfolio.alt)}" width="1200">
+</picture><br><strong>${escape(profile.portfolio.label)}</strong></a></p>`,
   await headingMarkup('technologies', 'Tech stack')
 ];
 

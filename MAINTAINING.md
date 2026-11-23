@@ -4,11 +4,11 @@ The deliverable is `README.md` plus `assets/`. It is prepared for the public pro
 
 ## Update the content
 
-- Edit `design/profile.json` for the name, introduction, command, displayed technology IDs, AI coding tools, capability descriptions and contact destinations.
+- Edit `design/profile.json` for the name, introduction, command, displayed technology IDs, AI coding tools, capability descriptions, the portfolio destination and contact destinations.
 - Edit `design/technologies.json` for the underlying audit inventory and badge definitions. Only IDs selected in `profile.json` appear in the README. Each entry uses a Simple Icons slug, a local brand icon or an explicit monogram. `npm` and `python` arrays map dependency aliases to that technology; they never appear in the profile.
 - Edit `design/tokens.json` for colors, font files, chip sizing and the mobile breakpoint. Terminal composition and glyph animation live in `scripts/artwork.mjs`.
 - Keep the public stack compact: one section, currently 29 core technologies, followed by four AI coding tools. The design tool selection is Figma. C#, Markdown, long library lists, category headings and the former “How I work” block were explicitly removed.
-- The “Automation & integrations” section describes workflow automation, APIs, webhooks, AI features, Stripe payments and subscriptions. Keep it short and concrete. Do not add individual projects, screenshots of work, rates or visitor counters. The requested contribution skyline below the contacts uses real daily GitHub totals.
+- The “Automation & integrations” section describes workflow automation, APIs, webhooks, AI features, Stripe payments and subscriptions. Keep it short and concrete. The compact portfolio link beneath the introduction uses project screenshots in `assets/portfolio/` with separate desktop and mobile compositions. Keep rates and visitor counters out of the profile. The requested contribution skyline below the contacts uses real daily GitHub totals.
 
 `design/dependencies.json` records the 103 direct npm dependencies and 16 direct Python dependencies found in the original audit. It contains no private repository names or source code. The 112-entry audit inventory remains available as a source of evidence; it is not the public badge list. Packages such as Radix subpackages, font packages, framework adapters and type definitions are explicitly mapped to their parent technology. AI tool experience was supplied by the owner separately.
 
@@ -52,7 +52,7 @@ Screenshots and the validation report are written to the ignored `preview/` dire
 - Screens at or below 600 px use the mobile composition. Reduced motion selects a separate static SVG; the animated files also contain a reduced-motion CSS rule for direct use.
 - The terminal, stack badges and contact cards keep their warm dark surfaces in both GitHub themes. Contacts stand out through slightly lighter brown surfaces, peach icons and borders, larger labels and short action captions. Their sizing and colors are in `tokens.contact`; captions are in `profile.contacts`. Heading artwork adapts to the theme; native body copy uses GitHub’s fonts and colors. GitHub owns the surrounding page background.
 - Individual badge images wrap naturally. The four contact links fill the available width, switching to two columns at 600 px through GitHub-compatible picture sources. Their fluid SVGs keep lettering at a fixed readable size; desktop and mobile exports preserve the outer alignment and inner gutters. Keep the links adjacent in the generated HTML so whitespace cannot wrap the last card. Contact cards have accessible image labels. Body copy remains native Markdown, and the terminal’s description is repeated in its image alt text.
-- The README uses local paths and no external badge, typing-animation, statistics or visitor-counter service. Only the four intentional contact links leave the repository.
+- The README uses local paths and no external badge, typing-animation, statistics or visitor-counter service. The portfolio link and four contact links lead outside this repository.
 
 To place this on GitHub, keep `README.md` and the entire `assets/` directory together at the root of **NikroZorkin/NikroZorkin**. Include `design/`, `scripts/`, the lockfile and these maintenance notes if future regeneration should be possible. Keep `.fonts/`, `.cache/`, `node_modules/` and `preview/` ignored.
 
