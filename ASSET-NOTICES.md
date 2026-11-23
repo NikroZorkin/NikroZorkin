@@ -28,7 +28,3 @@ Brand symbols come from [Simple Icons](https://github.com/simple-icons/simple-ic
 Codex, Grok and OpenAI marks come from [Lobe Icons](https://github.com/lobehub/lobe-icons), package `@lobehub/icons-static-svg` version **1.95.1**, under MIT. The selected vector geometry and pinned source URLs are saved in `design/brand-icons.json`, and the upstream license is in `design/LICENSE-lobe-icons.txt`. Grok CLI uses the plain Grok mark. Grokbot has a separate local icon variant: the same Grok mark in dark ink on a cream rounded tile, so the two tools are visually distinct. This framing is a local presentation choice, not a separate official Grokbot logo. Claude Code uses the dedicated Simple Icons mark. Tool names were supplied by the profile owner. No affiliation with the vendors is implied.
 
 The envelope symbol is local SVG geometry. All badge and contact symbols are static. GitHub-native rendering in the local preview is styled by [github-markdown-css](https://github.com/sindresorhus/github-markdown-css), version **5.9.0**, under its MIT license; those preview files are not part of the profile artwork.
-
-## Portfolio preview
-
-The desktop and mobile previews show the homepage of Danylo Zorkin’s portfolio, including his portrait and personal mascot.

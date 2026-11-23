@@ -33,8 +33,7 @@ try {
             documentWidth: document.documentElement.scrollWidth,
             viewportWidth: window.innerWidth,
             heroSource: hero.currentSrc,
-            portfolioSource: article.querySelector('img[src*="/portfolio/"]')?.currentSrc,
-            portfolioDestination: article.querySelector('a:has(img[src*="/portfolio/"])')?.getAttribute('href'),
+            portfolioDestination: hero.closest('a')?.getAttribute('href'),
             heroWidth: hero.getBoundingClientRect().width,
             badImages: [...article.querySelectorAll('img')].filter(img => !img.complete || !img.naturalWidth || !img.alt).map(img => img.src),
             overflow: [...article.querySelectorAll('img')].filter(img => img.getBoundingClientRect().right > article.getBoundingClientRect().right + 1).map(img => img.alt),
@@ -49,11 +48,10 @@ try {
         assert.deepEqual(state.overflow, [], 'Artwork extends beyond README');
         assert.equal(state.chipCount, displayedTechnologies.length);
         assert.equal(state.portfolioDestination, profile.portfolio.url);
-        assert(state.portfolioSource.endsWith(width <= 600 ? '/homepage-mobile.png' : '/homepage.png'), 'Incorrect portfolio preview');
         assert.deepEqual(state.aiTools, profile.aiTools.map(item => item.label));
         assert.deepEqual(state.contacts, profile.contacts.map(contact => contact.url));
         assert(state.headings.every(source => source.endsWith(`-${colorScheme}.svg`)), 'Heading theme selection failed');
-        assert(state.heroSource.endsWith(`hero-${width <= 600 ? 'mobile' : 'desktop'}${reducedMotion === 'reduce' ? '-static' : ''}.svg`), 'Incorrect terminal variant');
+        assert(new URL(state.heroSource).pathname.endsWith(`hero-${width <= 600 ? 'mobile' : 'desktop'}${reducedMotion === 'reduce' ? '-static' : ''}.svg`), 'Incorrect terminal variant');
         assert.deepEqual(errors, []);
         if (reducedMotion === 'reduce') {
           await page.screenshot({ path: `preview/screenshots/readme-${colorScheme}-${width}.png`, fullPage: true });

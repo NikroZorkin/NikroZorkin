@@ -11,8 +11,7 @@
   "intro": "I design in Figma and build responsive websites and web apps with Next.js, React, and TypeScript — from landing pages and redesigns to MVPs and dashboards.",
   "portfolio": {
     "url": "https://danylo-zorkin.netlify.app/",
-    "label": "Visit my portfolio website ↗",
-    "alt": "Homepage of my portfolio, with my portrait and the introduction “I’m Danylo Zorkin. I design interfaces and build web apps.”"
+    "label": "Open portfolio"
   },
   "technologyIds": [
     "figma", "html", "css", "javascript", "typescript", "react", "nextjs", "astro",

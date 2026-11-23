@@ -151,6 +151,13 @@ export function hero(fonts, mascot, { mobile = false, animate = true } = {}) {
   [colors.peach, colors.sand, '#66514B'].forEach((color, i) => {
     scene += `<circle cx="${(mobile ? 25 : 39) + i * dotStep}" cy="${dotY}" r="${dotR}" fill="${color}"/>`;
   });
+  const labelX = mobile ? 111 : 169;
+  const labelSize = mobile ? 18 : 23;
+  const arrowX = Math.round(labelX + measure(profile.portfolio.label, fonts.mono, labelSize)) + 9;
+  const arrowSize = mobile ? 10 : 13;
+  scene += `<path d="M${mobile ? 95 : 144} ${dotY - 10}v20" stroke="${colors.sand}" stroke-opacity=".4"/>`;
+  scene += lettering(profile.portfolio.label, labelX, dotY + (mobile ? 6 : 7), labelSize, fonts.mono, colors.text);
+  scene += `<g transform="translate(${arrowX} ${dotY - arrowSize / 2})" fill="none" stroke="${colors.peach}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M0 ${arrowSize}L${arrowSize} 0H2 M${arrowSize} 0v${arrowSize - 2}"/></g>`;
   scene += `<path d="M${width - 49} ${dotY}h23" stroke="${colors.sand}" stroke-width="2" stroke-linecap="round" opacity=".7"/>`;
 
   if (!mobile) {
@@ -181,6 +188,6 @@ export function hero(fonts, mascot, { mobile = false, animate = true } = {}) {
     scene += `<image x="101" y="316" width="288" height="216" xlink:href="${mascot}"/>`;
   }
   // The artwork has its fingers at the bottom; the border remains behind them.
-  const description = `${profile.role}. ${profile.hero.lines.join(' ')} ${profile.hero.command} A dark-haired illustrated character peeks over the lower edge of a warm brown terminal.`;
+  const description = `${profile.role}. ${profile.hero.lines.join(' ')} ${profile.hero.command} The terminal title bar reads “${profile.portfolio.label}”. A dark-haired illustrated character peeks over the lower edge of a warm brown terminal.`;
   return svgDocument(width, height, profile.name, defs + `<g clip-path="url(#bounds)">${scene}</g>`, description);
 }

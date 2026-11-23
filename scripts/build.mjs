@@ -11,12 +11,17 @@ for (const path of paths) await mkdir(path, { recursive: true });
 const mascot = await sharp(await readFile('assets/source/mascot.png')).resize({ width: 1000, withoutEnlargement: true }).png({ palette: true, colours: 256, dither: .25, effort: 10 }).toBuffer();
 await writeFile('assets/mascot.png', mascot);
 const embeddedMascot = `data:image/png;base64,${mascot.toString('base64')}`;
+const heroHash = createHash('sha256');
 for (const mobile of [false, true]) {
   for (const animate of [true, false]) {
     const name = `hero-${mobile ? 'mobile' : 'desktop'}${animate ? '' : '-static'}`;
-    await writeFile(`assets/${name}.svg`, hero(fonts, embeddedMascot, { mobile, animate }));
+    const artwork = hero(fonts, embeddedMascot, { mobile, animate });
+    heroHash.update(artwork);
+    await writeFile(`assets/${name}.svg`, artwork);
   }
 }
+
+const heroVersion = heroHash.digest('hex').slice(0, 12);
 
 async function headingMarkup(id, title, level = 2) {
   let dimensions;
@@ -30,17 +35,13 @@ async function headingMarkup(id, title, level = 2) {
 
 const sections = [
   '<!-- Generated from design/profile.json and design/technologies.json with npm run build. -->',
-  `<picture>
-  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero-mobile-static.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero-desktop-static.svg">
-  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/hero-mobile.svg">
-  <img src="./assets/hero-desktop.svg" alt="${escape(profile.name)} — ${escape(profile.role)}. ${escape(profile.hero.lines.join(' '))}" width="1200">
-</picture>`,
-  profile.intro,
   `<p><a href="${escape(profile.portfolio.url)}"><picture>
-  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/portfolio/homepage-mobile.png">
-  <img src="./assets/portfolio/homepage.png" alt="${escape(profile.portfolio.alt)}" width="1200">
-</picture><br><strong>${escape(profile.portfolio.label)}</strong></a></p>`,
+  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero-mobile-static.svg?v=${heroVersion}">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero-desktop-static.svg?v=${heroVersion}">
+  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/hero-mobile.svg?v=${heroVersion}">
+  <img src="./assets/hero-desktop.svg?v=${heroVersion}" alt="${escape(profile.portfolio.label)} — ${escape(profile.name)}, ${escape(profile.role)}. ${escape(profile.hero.lines.join(' '))}" width="1200">
+</picture></a></p>`,
+  profile.intro,
   await headingMarkup('technologies', 'Tech stack')
 ];
 
