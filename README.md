@@ -1,10 +1,10 @@
 <!-- Generated from design/profile.json and design/technologies.json with npm run build. -->
 
 <p><a href="https://danylo-zorkin.netlify.app/"><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero-mobile-static.svg?v=ecf65b656f12">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero-desktop-static.svg?v=ecf65b656f12">
-  <source media="(max-width: 600px)" srcset="./assets/hero-mobile.svg?v=ecf65b656f12">
-  <img src="./assets/hero-desktop.svg?v=ecf65b656f12" alt="Open portfolio — Danylo Zorkin, Full-Stack Web Developer · UI/UX Designer. I design in Figma and build with Next.js, React and TypeScript." width="1200">
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero/06924898e574-hero-mobile-static.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero/99a66b1ed49e-hero-desktop-static.svg">
+  <source media="(max-width: 600px)" srcset="./assets/hero/afae383b5326-hero-mobile.svg">
+  <img src="./assets/hero/43966ccf085f-hero-desktop.svg" alt="Open portfolio — Danylo Zorkin, Full-Stack Web Developer · UI/UX Designer. I design in Figma and build with Next.js, React and TypeScript." width="1200">
 </picture></a></p>
 
 I design in Figma and build responsive websites and web apps with Next.js, React, and TypeScript — from landing pages and redesigns to MVPs and dashboards.

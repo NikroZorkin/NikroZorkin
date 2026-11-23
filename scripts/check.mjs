@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFile, readdir, stat } from 'node:fs/promises';
-import { resolve, relative } from 'node:path';
+import { basename, resolve, relative } from 'node:path';
 import sharp from 'sharp';
 import { profile, inventory, displayedTechnologies } from './artwork.mjs';
 
@@ -53,10 +54,14 @@ for (const path of assets.filter(path => path.endsWith('.svg'))) {
   assert(!/<(?:script|foreignObject|text)\b|@font-face/i.test(svg), `Non-portable SVG: ${path}`);
   assert(!/(?:href|xlink:href)="(?!data:image\/png;base64,|#)/.test(svg), `External SVG dependency: ${path}`);
   assert(svg.includes('<title') && svg.includes('<desc'), `Missing image metadata: ${path}`);
-  const animated = /assets\/(hero|skyline)-(desktop|mobile)\.svg$/.test(path);
+  const animated = /(?:hero|skyline)-(desktop|mobile)\.svg$/.test(path);
   assert.equal(svg.includes('@keyframes') || svg.includes('<animate '), animated, `Unexpected animation in ${path}`);
   if (animated) assert(svg.includes('prefers-reduced-motion:reduce'), 'Missing internal reduced-motion support');
-  if (path.includes('/hero-')) assert(Buffer.byteLength(svg) < 600_000, `Oversized terminal card: ${path}`);
+  if (path.startsWith('assets/hero/')) {
+    const digest = createHash('sha256').update(svg).digest('hex').slice(0, 12);
+    assert(basename(path).startsWith(`${digest}-hero-`), `Banner filename must identify its contents: ${path}`);
+    assert(Buffer.byteLength(svg) < 600_000, `Oversized terminal card: ${path}`);
+  }
 }
 const mascot = await sharp('assets/mascot.png').metadata();
 assert(mascot.hasAlpha, 'Mascot transparency was lost');

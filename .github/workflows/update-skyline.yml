@@ -48,7 +48,7 @@ jobs:
       - name: Save updated skyline
         if: steps.calendar.outputs.changed == 'true' || inputs.rebuild == true
         run: |
-          git add -- README.md design/contributions.json assets/skyline-*.svg
+          git add -- README.md design/contributions.json assets/skyline-*.svg assets/hero/
           if git diff --cached --quiet; then
             exit 0
           fi

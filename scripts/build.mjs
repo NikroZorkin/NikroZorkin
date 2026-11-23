@@ -5,23 +5,23 @@ import { skyline, skylineModel } from './skyline.mjs';
 import { profile, tokens, displayedTechnologies, escape, loadFonts, hero, chip, heading, contactCard } from './artwork.mjs';
 
 const fonts = await loadFonts();
-const paths = ['assets/stack', 'assets/ai-tools', 'assets/headings', 'assets/contacts'];
+const paths = ['assets/hero', 'assets/stack', 'assets/ai-tools', 'assets/headings', 'assets/contacts'];
 for (const path of paths) await mkdir(path, { recursive: true });
 
 const mascot = await sharp(await readFile('assets/source/mascot.png')).resize({ width: 1000, withoutEnlargement: true }).png({ palette: true, colours: 256, dither: .25, effort: 10 }).toBuffer();
 await writeFile('assets/mascot.png', mascot);
 const embeddedMascot = `data:image/png;base64,${mascot.toString('base64')}`;
-const heroHash = createHash('sha256');
+const heroFiles = {};
 for (const mobile of [false, true]) {
   for (const animate of [true, false]) {
-    const name = `hero-${mobile ? 'mobile' : 'desktop'}${animate ? '' : '-static'}`;
+    const variant = `${mobile ? 'mobile' : 'desktop'}${animate ? '' : '-static'}`;
     const artwork = hero(fonts, embeddedMascot, { mobile, animate });
-    heroHash.update(artwork);
-    await writeFile(`assets/${name}.svg`, artwork);
+    // GitHub's raw redirect drops query strings, so put the version in the filename.
+    const digest = createHash('sha256').update(artwork).digest('hex').slice(0, 12);
+    heroFiles[variant] = `${digest}-hero-${variant}.svg`;
+    await writeFile(`assets/hero/${heroFiles[variant]}`, artwork);
   }
 }
-
-const heroVersion = heroHash.digest('hex').slice(0, 12);
 
 async function headingMarkup(id, title, level = 2) {
   let dimensions;
@@ -36,10 +36,10 @@ async function headingMarkup(id, title, level = 2) {
 const sections = [
   '<!-- Generated from design/profile.json and design/technologies.json with npm run build. -->',
   `<p><a href="${escape(profile.portfolio.url)}"><picture>
-  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero-mobile-static.svg?v=${heroVersion}">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero-desktop-static.svg?v=${heroVersion}">
-  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/hero-mobile.svg?v=${heroVersion}">
-  <img src="./assets/hero-desktop.svg?v=${heroVersion}" alt="${escape(profile.portfolio.label)} — ${escape(profile.name)}, ${escape(profile.role)}. ${escape(profile.hero.lines.join(' '))}" width="1200">
+  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px) and (prefers-reduced-motion: reduce)" srcset="./assets/hero/${heroFiles['mobile-static']}">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hero/${heroFiles['desktop-static']}">
+  <source media="(max-width: ${tokens.hero.mobileBreakpoint}px)" srcset="./assets/hero/${heroFiles.mobile}">
+  <img src="./assets/hero/${heroFiles.desktop}" alt="${escape(profile.portfolio.label)} — ${escape(profile.name)}, ${escape(profile.role)}. ${escape(profile.hero.lines.join(' '))}" width="1200">
 </picture></a></p>`,
   profile.intro,
   await headingMarkup('technologies', 'Tech stack')
@@ -94,6 +94,7 @@ await writeFile('README.md', `${sections.join('\n\n')}\n`);
 
 // These directories contain generated SVGs only. Remove exports no longer used by the profile.
 const expected = {
+  hero: Object.values(heroFiles),
   stack: displayedTechnologies.map(item => `${item.id}.svg`),
   'ai-tools': profile.aiTools.map(item => `${item.id}.svg`),
   headings: ['technologies', 'ai-tools', 'capabilities', 'connect'].flatMap(id => ['dark', 'light'].map(theme => `${id}-${theme}.svg`)),
