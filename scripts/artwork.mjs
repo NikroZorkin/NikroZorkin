@@ -139,6 +139,36 @@ function commandLine(fonts, x, y, size, animate) {
   return (animate ? `<style>${style}</style>` : '') + glyphs + cursor;
 }
 
+function portfolioIsland(fonts, width, mobile) {
+  const label = profile.portfolio.label;
+  const size = mobile ? 19 : 26;
+  const depth = mobile ? 41 : 53;
+  const lens = mobile ? 5 : 7;
+  const arrowSize = mobile ? 11 : 15;
+  const padding = mobile ? 18 : 24;
+  const gap = mobile ? 10 : 13;
+  const radius = mobile ? 20 : 24;
+  const shoulder = mobile ? 9 : 12;
+  const centerY = depth * .51;
+  const labelX = padding + lens * 2 + gap;
+  const arrowX = labelX + measure(label, fonts.sans, size) + gap;
+  const islandWidth = arrowX + arrowSize + padding;
+  const centerX = mobile ? width * .56 : width / 2;
+  const left = Math.round(centerX - islandWidth / 2);
+  const outline = `M${-shoulder} 0 Q0 0 2 ${shoulder} L5 ${depth - radius}
+    Q9 ${depth} ${radius + 5} ${depth} H${islandWidth - radius - 5}
+    Q${islandWidth - 9} ${depth} ${islandWidth - 5} ${depth - radius}
+    L${islandWidth - 2} ${shoulder} Q${islandWidth} 0 ${islandWidth + shoulder} 0`;
+
+  return `<g transform="translate(${left} 2)">
+    <path d="${outline}" fill="${colors.sand}" stroke="${colors.text}" stroke-opacity=".72" stroke-width="1.15"/>
+    <circle cx="${padding + lens}" cy="${centerY}" r="${lens}" fill="${colors.background}" stroke="${colors.border}" stroke-width="1.8"/>
+    <circle cx="${padding + lens - 1}" cy="${centerY - 1}" r="${lens * .43}" fill="${colors.sand}"/>
+    ${lettering(label, labelX, centerY + size * .34, size, fonts.sans, colors.background)}
+    <g transform="translate(${arrowX} ${centerY - arrowSize / 2})" fill="none" stroke="${colors.background}" stroke-width="${mobile ? 2 : 2.6}" stroke-linecap="round" stroke-linejoin="round"><path d="M0 ${arrowSize}L${arrowSize} 0M2 0h${arrowSize - 2}v${arrowSize - 2}"/></g>
+  </g>`;
+}
+
 export function hero(fonts, mascot, { mobile = false, animate = true } = {}) {
   const width = mobile ? tokens.hero.mobileWidth : tokens.hero.desktopWidth;
   const height = mobile ? tokens.hero.mobileHeight : tokens.hero.desktopHeight;
@@ -151,13 +181,6 @@ export function hero(fonts, mascot, { mobile = false, animate = true } = {}) {
   [colors.peach, colors.sand, '#66514B'].forEach((color, i) => {
     scene += `<circle cx="${(mobile ? 25 : 39) + i * dotStep}" cy="${dotY}" r="${dotR}" fill="${color}"/>`;
   });
-  const labelX = mobile ? 111 : 169;
-  const labelSize = mobile ? 18 : 23;
-  const arrowX = Math.round(labelX + measure(profile.portfolio.label, fonts.mono, labelSize)) + 9;
-  const arrowSize = mobile ? 10 : 13;
-  scene += `<path d="M${mobile ? 95 : 144} ${dotY - 10}v20" stroke="${colors.sand}" stroke-opacity=".4"/>`;
-  scene += lettering(profile.portfolio.label, labelX, dotY + (mobile ? 6 : 7), labelSize, fonts.mono, colors.text);
-  scene += `<g transform="translate(${arrowX} ${dotY - arrowSize / 2})" fill="none" stroke="${colors.peach}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M0 ${arrowSize}L${arrowSize} 0H2 M${arrowSize} 0v${arrowSize - 2}"/></g>`;
   scene += `<path d="M${width - 49} ${dotY}h23" stroke="${colors.sand}" stroke-width="2" stroke-linecap="round" opacity=".7"/>`;
 
   if (!mobile) {
@@ -187,6 +210,7 @@ export function hero(fonts, mascot, { mobile = false, animate = true } = {}) {
     scene += `<path d="M37 435h27m-11 61h26" stroke="${colors.sand}" stroke-width="2" stroke-linecap="round" opacity=".45"/>`;
     scene += `<image x="101" y="316" width="288" height="216" xlink:href="${mascot}"/>`;
   }
+  scene += portfolioIsland(fonts, width, mobile);
   // The artwork has its fingers at the bottom; the border remains behind them.
   const description = `${profile.role}. ${profile.hero.lines.join(' ')} ${profile.hero.command} The terminal title bar reads “${profile.portfolio.label}”. A dark-haired illustrated character peeks over the lower edge of a warm brown terminal.`;
   return svgDocument(width, height, profile.name, defs + `<g clip-path="url(#bounds)">${scene}</g>`, description);
